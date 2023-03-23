@@ -1,0 +1,72 @@
+<div style="text-align: center;">
+    <h1>Add Vehicle</h1>
+    </div>
+    
+    <div>
+    <form #departmentModel="ngForm" (ngSubmit) = "Submit()">
+      <div class="dropdown">
+        <label for="designation" class="form-label">Employee Id</label>
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          {{edit? (updateVehicle.employeeId?updateVehicle.employeeId:selectEmployeeId):(vehicle.employeeId?vehicle.employeeId:selectEmployeeId)}}</button>
+        <ul class="dropdown-menu">
+          <li class="cursor-pointer" >
+            <a class="dropdown-item" *ngFor="let employee of employees; index as i" (click)="EmployeeId(employee.id)">{{employee.id}}</a>
+          </li>
+        </ul>
+      </div>
+       
+
+        <div class="mb-3">
+          <label for="designation" class="form-label">Vehicle Name</label>
+          <input required minlength="4" maxlength="25" #designation="ngModel" type="text" class="form-control" 
+          id="designation" name="designation" placeholder="Enter Vehicle Name"[ngModel]="!edit?vehicle.name:updateVehicle.name"
+          (ngModelChange)="!edit?vehicle.name=$event:updateVehicle.name=$event">
+          <span *ngIf="designation.invalid" class="alert alert-danger">
+            Enter Valid Vehicle Name
+        </span>
+        </div>
+        
+        <button type="submit" class="btn btn-primary" [disabled]="edit" style="margin: 5px;">Submit</button>
+        <button type="submit" class="btn btn-primary" *ngIf="edit" (click)="UpdateVehicle('update')" style="margin: 5px;">Update</button>
+        <button type="submit" class="btn btn-primary" *ngIf="edit" (click)="UpdateVehicle('cancel')" style="margin: 5px;">Cancel</button>
+      </form>
+      <h1>Vehicle</h1>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Vehicle Name</th>
+            <th scope="col">Employee Id</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehicle of vehicles">
+            <th>{{vehicle.id}}</th>
+            <td>{{vehicle.name}}</td>
+            <td>{{vehicle.employeeId}}</td>
+            <td><input type="image" src="./assets/img/edit.png" style="width: 25px; padding: 3px;" (click)="EditVehicle(vehicle)">
+            <input type="image" src="./assets/img/delete.png" style="width: 25px; padding: 3px;" (click)="DeleteVehicle(vehicle)" ></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+   
+    <!-- <div class="modal" id="modal1" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirm Delete</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure to delete this vehicle</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="PopUpActions(false)">Cancel</button>
+            <button type="button" class="btn btn-primary" (click)="PopUpActions(true)">Delete</button>
+          </div>
+        </div>
+      </div>
+    </div> -->

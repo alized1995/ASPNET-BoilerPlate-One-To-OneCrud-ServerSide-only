@@ -1,8 +1,9 @@
 .alert-danger{
+    display: inline-block;
     text-align: center;
     color: brown;
     background-color: white;
-    height: 5px;
+    height: 45px;
     margin-top: 3px;
     padding: 3px;
 }

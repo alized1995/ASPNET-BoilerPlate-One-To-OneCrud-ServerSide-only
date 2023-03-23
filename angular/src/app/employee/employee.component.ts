@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EmployeeServiceProxy,CreateEmployeeDto, ViewEmployeeDto, UpdateEmployeeDto} from '@shared/service-proxies/service-proxies';
 
-declare var window: any;
 
 
 
@@ -17,8 +16,6 @@ export class EmployeeComponent implements OnInit{
   employee: CreateEmployeeDto;
   updateEmployee: UpdateEmployeeDto;
   edit: boolean;
-  formModal: any;
-  confirm: boolean;
   selectDesignation: string;
 
 
@@ -29,17 +26,13 @@ export class EmployeeComponent implements OnInit{
   'Jr. Dotnet Developer', 'Dotnet Developer', 'Sr. Dotnet Developer', 'Business Developer']
     this.employee = new CreateEmployeeDto();
     this.updateEmployee = new UpdateEmployeeDto();
-    this.employees = new Array(); 
-    this.confirm = false;
+    this.employees = []; 
     this.selectDesignation = 'Select Designation'
     }
 
   ngOnInit(): void {
     this.edit = false;
     this.GetAllEmployees();
-    this.formModal = new window.bootstrap.Modal(
-      document.getElementById("modal1")
-    );
 
   }
 
@@ -119,25 +112,7 @@ export class EmployeeComponent implements OnInit{
     }, 3000);
     }
 
-  // PopUpModal(){
-  //  this.formModal.show();
-  //  setTimeout(() => {
-  //   this.formModal.hide();
-  //  }, 3000);
-   
-  // }
 
-  // PopUpActions(confirmStatus: boolean){
-  //   if(confirmStatus){
-  //     this.confirm = true;
-  //     this.formModal.hide();
-      
-  //   }
-  //   else if(!confirmStatus){
-  //     this.confirm = false;
-  //     this.formModal.hide();
-  //   }
-  // }
 
 }
 

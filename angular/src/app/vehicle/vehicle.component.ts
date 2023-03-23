@@ -10,34 +10,30 @@ declare var window: any;
 export class VehicleComponent implements OnInit {
   // Global Declarations
   employees: ViewEmployeeDto[];
+  filterEmployeeIds: number[];
   vehicles: ViewVehicleDto[];
   designations: string[];
   vehicle: CreateVehicleDto;
   updateVehicle: UpdateVehicleDto;
   edit: boolean;
-  formModal: any;
-  confirm: boolean;
-  selectEmployeeId: string;
-
+  selectEmployee: string;
 
 
 constructor(private _employeeService: EmployeeServiceProxy, private _vehicleService: VehicleServiceProxy){
   this.GetAllEmployees();
   this.vehicle = new CreateVehicleDto();
   this.updateVehicle = new UpdateVehicleDto();
-  this.selectEmployeeId = 'Select Employee Id';
-  this.confirm = false;
+  this.selectEmployee = 'Select Employee ID';
+  
 }
 
 ngOnInit(): void {
   this.edit = false;
   this.GetAllEmployees();
   this.GetAllVehicles();
-  this.formModal = new window.bootstrap.Modal(
-    document.getElementById("modal1")
-  );
+    
+  }
 
-}
 
 EmployeeId(employeeId: number){
   if(this.edit){
@@ -111,28 +107,4 @@ UpdateVehicle(action: string){
       }, 2000);
  
     }
- 
- 
-// PopUpModal(){
-//  this.formModal.show();
-//  setTimeout(() => {
-//   this.formModal.hide();
-//  }, 3000);
- 
-// }
-
-// PopUpActions(confirmStatus: boolean){
-//   if(confirmStatus){
-//     this.confirm = true;
-//     this.formModal.hide();
-    
-//   }
-//   else if(!confirmStatus){
-//     this.confirm = false;
-//     this.formModal.hide();
-//   }
-// }
-
- 
-
 }

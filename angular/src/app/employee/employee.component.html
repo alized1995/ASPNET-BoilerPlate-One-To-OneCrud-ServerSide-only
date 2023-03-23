@@ -9,7 +9,7 @@
       <input required minlength="4" maxlength="20" #name="ngModel" type="text" class="form-control" 
       id="name" name="name" placeholder="Enter Employee's Name" [ngModel]="!edit?employee.name:updateEmployee.name"
       (ngModelChange)="!edit?employee.name=$event:updateEmployee.name=$event">
-      <span *ngIf="name.invalid" class="alert alert-danger"]>
+      <span *ngIf="!name.untouched && name.invalid" class="alert alert-danger"]>
           Enter Valid Name
       </span>
     </div> 
@@ -18,7 +18,7 @@
       <input required minlength="10" maxlength="50" #address="ngModel" type="text" class="form-control" 
       id="address" name="address" placeholder="Enter Employee's Address" [ngModel]="!edit?employee.address:updateEmployee.address"
       (ngModelChange)="!edit?employee.address=$event:updateEmployee.address=$event">
-      <span *ngIf="address.invalid" class="alert alert-danger">
+      <span *ngIf="!address.untouched && address.invalid" class="alert alert-danger">
         Enter Valid Address
     </span>
     </div>
@@ -47,6 +47,9 @@
       <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
         {{edit?(updateEmployee.designation?updateEmployee.designation:selectDesignation):(employee.designation?employee.designation:selectDesignation)}}</button>
       <ul class="dropdown-menu">
+        <li class="cursor-pointer" (click)="Designation('')">
+          <a class="dropdown-item">{{ selectDesignation }}</a>
+        </li>
         <li class="cursor-pointer" >
           <a class="dropdown-item" *ngFor="let designation of designations; index as i" (click)="Designation(designation)">{{designation}}</a>
         </li>
@@ -82,21 +85,3 @@
     </tbody>
   </table>
 </div>
-
-<!-- <div class="modal" id="modal1" tabindex="-1">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Confirm Delete</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p>Are you sure to delete this employee</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" (click)="PopUpActions(false)">Cancel</button>
-        <button type="button" class="btn btn-primary" (click)="PopUpActions(true)">Delete</button>
-      </div>
-    </div>
-  </div>
-</div> -->

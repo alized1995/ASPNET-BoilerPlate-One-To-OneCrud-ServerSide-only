@@ -7,8 +7,11 @@
       <div class="dropdown">
         <label for="designation" class="form-label">Employee Id</label>
         <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-          {{edit? (updateVehicle.employeeId?updateVehicle.employeeId:selectEmployeeId):(vehicle.employeeId?vehicle.employeeId:selectEmployeeId)}}</button>
+          {{edit? (updateVehicle.employeeId?updateVehicle.employeeId:selectEmployee):(vehicle.employeeId?vehicle.employeeId:selectEmployee)}}</button>
         <ul class="dropdown-menu">
+          <li class="cursor-pointer" (click)="EmployeeId(null)">
+            <a class="dropdown-item">{{ selectEmployee }}</a>
+          </li>
           <li class="cursor-pointer" >
             <a class="dropdown-item" *ngFor="let employee of employees; index as i" (click)="EmployeeId(employee.id)">{{employee.id}}</a>
           </li>
@@ -17,11 +20,11 @@
        
 
         <div class="mb-3">
-          <label for="designation" class="form-label">Vehicle Name</label>
-          <input required minlength="4" maxlength="25" #designation="ngModel" type="text" class="form-control" 
-          id="designation" name="designation" placeholder="Enter Vehicle Name"[ngModel]="!edit?vehicle.name:updateVehicle.name"
+          <label for="name" class="form-label">Vehicle Name</label>
+          <input required minlength="4" maxlength="25" #name="ngModel" type="text" class="form-control" 
+          id="name" name="name" placeholder="Enter Vehicle Name"[ngModel]="!edit?vehicle.name:updateVehicle.name"
           (ngModelChange)="!edit?vehicle.name=$event:updateVehicle.name=$event">
-          <span *ngIf="designation.invalid" class="alert alert-danger">
+          <span *ngIf="!name.untouched && name.invalid" class="alert alert-danger">
             Enter Valid Vehicle Name
         </span>
         </div>
@@ -30,7 +33,7 @@
         <button type="submit" class="btn btn-primary" *ngIf="edit" (click)="UpdateVehicle('update')" style="margin: 5px;">Update</button>
         <button type="submit" class="btn btn-primary" *ngIf="edit" (click)="UpdateVehicle('cancel')" style="margin: 5px;">Cancel</button>
       </form>
-      <h1>Vehicle</h1>
+      <h1>Vehicles</h1>
       <table class="table">
         <thead>
           <tr>

@@ -12,8 +12,8 @@ using OneToOneCrud.EntityFrameworkCore;
 namespace OneToOneCrud.Migrations
 {
     [DbContext(typeof(OneToOneCrudDbContext))]
-    [Migration("20230316155456_CreateEmployeeDepartmentTable")]
-    partial class CreateEmployeeDepartmentTable
+    [Migration("20230316155456_CreateEmployeevehicleTable")]
+    partial class CreateEmployeevehicleTable
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1576,7 +1576,7 @@ namespace OneToOneCrud.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("OneToOneCrud.Company_Models.Department", b =>
+            modelBuilder.Entity("OneToOneCrud.Company_Models.vehicle", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -1597,7 +1597,7 @@ namespace OneToOneCrud.Migrations
                     b.HasIndex("EmployeeId")
                         .IsUnique();
 
-                    b.ToTable("Departments");
+                    b.ToTable("vehicles");
                 });
 
             modelBuilder.Entity("OneToOneCrud.Company_Models.Employee", b =>
@@ -1913,11 +1913,11 @@ namespace OneToOneCrud.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
-            modelBuilder.Entity("OneToOneCrud.Company_Models.Department", b =>
+            modelBuilder.Entity("OneToOneCrud.Company_Models.vehicle", b =>
                 {
                     b.HasOne("OneToOneCrud.Company_Models.Employee", "Employee")
-                        .WithOne("Department")
-                        .HasForeignKey("OneToOneCrud.Company_Models.Department", "EmployeeId")
+                        .WithOne("vehicle")
+                        .HasForeignKey("OneToOneCrud.Company_Models.vehicle", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2024,7 +2024,7 @@ namespace OneToOneCrud.Migrations
 
             modelBuilder.Entity("OneToOneCrud.Company_Models.Employee", b =>
                 {
-                    b.Navigation("Department");
+                    b.Navigation("vehicle");
                 });
 #pragma warning restore 612, 618
         }

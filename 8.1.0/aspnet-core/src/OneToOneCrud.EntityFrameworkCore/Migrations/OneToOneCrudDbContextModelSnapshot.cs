@@ -1573,30 +1573,6 @@ namespace OneToOneCrud.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("OneToOneCrud.Company_Models.Department", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId")
-                        .IsUnique();
-
-                    b.ToTable("Departments");
-                });
-
             modelBuilder.Entity("OneToOneCrud.Company_Models.Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -1623,6 +1599,30 @@ namespace OneToOneCrud.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("OneToOneCrud.Company_Models.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
+
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("OneToOneCrud.MultiTenancy.Tenant", b =>
@@ -1907,11 +1907,11 @@ namespace OneToOneCrud.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
-            modelBuilder.Entity("OneToOneCrud.Company_Models.Department", b =>
+            modelBuilder.Entity("OneToOneCrud.Company_Models.Vehicle", b =>
                 {
                     b.HasOne("OneToOneCrud.Company_Models.Employee", "Employee")
-                        .WithOne("Department")
-                        .HasForeignKey("OneToOneCrud.Company_Models.Department", "EmployeeId")
+                        .WithOne("Vehicle")
+                        .HasForeignKey("OneToOneCrud.Company_Models.Vehicle", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2018,7 +2018,7 @@ namespace OneToOneCrud.Migrations
 
             modelBuilder.Entity("OneToOneCrud.Company_Models.Employee", b =>
                 {
-                    b.Navigation("Department");
+                    b.Navigation("Vehicle");
                 });
 #pragma warning restore 612, 618
         }

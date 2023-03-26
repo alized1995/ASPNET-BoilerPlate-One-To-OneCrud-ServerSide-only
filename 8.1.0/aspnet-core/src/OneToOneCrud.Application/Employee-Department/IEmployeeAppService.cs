@@ -1,21 +1,24 @@
 ﻿using Abp.Application.Services;
-using OneToOneCrud.Employee_Department_DTOs;
+using OneToOneCrud.Employee_vehicle_DTOs;
+using OneToOneCrud.Employee_vehicle_DTOs.Employee_DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OneToOneCrud.Employee_Department
+namespace OneToOneCrud.Employee_vehicle
 {
     public interface IEmployeeAppService : IApplicationService
     {
-        void CreateEmployee(CreateEmployeeDto input);
+        Task CreateEmployee(CreateEmployeeDto input);
 
         Task<List<ViewEmployeeDto>> GetAllEmployees();
 
-        Task<int> UpdateEmployeeById(int updateId, UpdateEmployeeDto updateEmployeeDto);
+        Task<int> UpdateEmployee(UpdateEmployeeDto updateEmployeeDto);
 
-        Task<int> DeleteEmployeeById(int deleteId);
+        Task<int> DeleteEmployeeById(int id);
+
+        Task<ViewEmployeeDto> GetEmployeeById(int id);
     }
 }

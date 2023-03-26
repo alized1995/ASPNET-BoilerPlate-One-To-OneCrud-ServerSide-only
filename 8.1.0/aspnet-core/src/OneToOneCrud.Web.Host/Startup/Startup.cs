@@ -71,6 +71,7 @@ namespace OneToOneCrud.Web.Host.Startup
                         .AllowAnyHeader()
                         .AllowAnyMethod()
                         .AllowCredentials()
+                        
                 )
             );
 

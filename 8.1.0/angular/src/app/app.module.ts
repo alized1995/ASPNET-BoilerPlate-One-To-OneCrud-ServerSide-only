@@ -38,12 +38,17 @@ import { SidebarComponent } from './layout/sidebar.component';
 import { SidebarLogoComponent } from './layout/sidebar-logo.component';
 import { SidebarUserPanelComponent } from './layout/sidebar-user-panel.component';
 import { SidebarMenuComponent } from './layout/sidebar-menu.component';
+import { EmployeeComponent } from './employee/employee.component';
+import { VehicleServiceProxy, EmployeeServiceProxy } from '@shared/service-proxies/service-proxies';
+import { VehicleComponent } from './vehicle/vehicle.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HomeComponent,
         AboutComponent,
+        EmployeeComponent,
+        VehicleComponent,
         // tenants
         TenantsComponent,
         CreateTenantDialogComponent,
@@ -67,7 +72,9 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
         SidebarComponent,
         SidebarLogoComponent,
         SidebarUserPanelComponent,
-        SidebarMenuComponent
+        SidebarMenuComponent,
+       
+        
     ],
     imports: [
         CommonModule,
@@ -84,6 +91,6 @@ import { SidebarMenuComponent } from './layout/sidebar-menu.component';
         SharedModule,
         NgxPaginationModule,
     ],
-    providers: []
+    providers: [EmployeeServiceProxy, VehicleServiceProxy]
 })
 export class AppModule {}

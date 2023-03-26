@@ -8,10 +8,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OneToOneCrud.Employee_Department_DTOs
+namespace OneToOneCrud.Employee_vehicle_DTOs
 {
     
-    public class CreateDepartmentDto : EntityDto<int>
+    public class CreateVehicleDto : EntityDto<int>
     {
         [Required]
         public string Name { get; set; }

@@ -1,21 +1,22 @@
 ﻿using Abp.AutoMapper;
+using OneToOneCrud.Company_Models;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OneToOneCrud.Employee_Department_DTOs.Department
+namespace OneToOneCrud.Employee_vehicle_DTOs
 {
     
-    public class UpdateDepartmentDto
+    public class ViewVehicleDto
     {
-        [Required]
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
-        [Required]
         public int EmployeeId { get; set; }
+
+        public Employee Employee { get; set; }
     }
 }

@@ -1,0 +1,28 @@
+.alert-danger{
+    display: inline-block;
+    text-align: center;
+    color: brown;
+    background-color: white;
+    height: 45px;
+    margin-top: 3px;
+    padding: 3px;
+}
+
+.cursor-pointer{
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.dropdown-menu li:hover {
+    cursor: pointer;
+    
+}
+/* 
+.button{
+    color: white;
+    background-color: blue;
+    margin: 12px;
+    height: 38px;
+    width: 74px;
+} */

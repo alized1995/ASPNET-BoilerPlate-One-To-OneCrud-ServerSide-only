@@ -12,8 +12,8 @@ using OneToOneCrud.EntityFrameworkCore;
 namespace OneToOneCrud.Migrations
 {
     [DbContext(typeof(OneToOneCrudDbContext))]
-    [Migration("20230316173722_CreateTablesV2")]
-    partial class CreateTablesV2
+    [Migration("20230321130349_createvehicledepartmenttables")]
+    partial class createvehicledepartmenttables
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1576,30 +1576,6 @@ namespace OneToOneCrud.Migrations
                     b.ToTable("AbpUsers");
                 });
 
-            modelBuilder.Entity("OneToOneCrud.Company_Models.vehicle", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("EmployeeId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId")
-                        .IsUnique();
-
-                    b.ToTable("vehicles");
-                });
-
             modelBuilder.Entity("OneToOneCrud.Company_Models.Employee", b =>
                 {
                     b.Property<int>("Id")
@@ -1626,6 +1602,30 @@ namespace OneToOneCrud.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Employees");
+                });
+
+            modelBuilder.Entity("OneToOneCrud.Company_Models.Vehicle", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("EmployeeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar(15)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId")
+                        .IsUnique();
+
+                    b.ToTable("Vehicles");
                 });
 
             modelBuilder.Entity("OneToOneCrud.MultiTenancy.Tenant", b =>
@@ -1910,11 +1910,11 @@ namespace OneToOneCrud.Migrations
                     b.Navigation("LastModifierUser");
                 });
 
-            modelBuilder.Entity("OneToOneCrud.Company_Models.vehicle", b =>
+            modelBuilder.Entity("OneToOneCrud.Company_Models.Vehicle", b =>
                 {
                     b.HasOne("OneToOneCrud.Company_Models.Employee", "Employee")
-                        .WithOne("vehicle")
-                        .HasForeignKey("OneToOneCrud.Company_Models.vehicle", "EmployeeId")
+                        .WithOne("Vehicle")
+                        .HasForeignKey("OneToOneCrud.Company_Models.Vehicle", "EmployeeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -2021,7 +2021,7 @@ namespace OneToOneCrud.Migrations
 
             modelBuilder.Entity("OneToOneCrud.Company_Models.Employee", b =>
                 {
-                    b.Navigation("vehicle");
+                    b.Navigation("Vehicle");
                 });
 #pragma warning restore 612, 618
         }

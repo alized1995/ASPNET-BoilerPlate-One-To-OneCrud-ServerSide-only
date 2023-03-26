@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace OneToOneCrud.Company_Models
 {
-    public class Department : Entity<int>
+    public class Vehicle : Entity<int>
     {
 
         [Required]
-        [StringLength(20, ErrorMessage = "Maximum Length is 20")]
+        [StringLength(15, ErrorMessage = "Maximum Length is 15")]
         public virtual string Name { get; set; }
 
         public virtual int EmployeeId { get; set; }

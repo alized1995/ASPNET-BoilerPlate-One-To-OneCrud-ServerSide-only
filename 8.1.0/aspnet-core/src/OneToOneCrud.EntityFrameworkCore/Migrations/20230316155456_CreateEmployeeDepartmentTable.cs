@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace OneToOneCrud.Migrations
 {
     /// <inheritdoc />
-    public partial class CreateEmployeeDepartmentTable : Migration
+    public partial class CreateEmployeevehicleTable : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -28,7 +28,7 @@ namespace OneToOneCrud.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Departments",
+                name: "vehicles",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -38,9 +38,9 @@ namespace OneToOneCrud.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Departments", x => x.Id);
+                    table.PrimaryKey("PK_vehicles", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Departments_Employees_EmployeeId",
+                        name: "FK_vehicles_Employees_EmployeeId",
                         column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
@@ -48,8 +48,8 @@ namespace OneToOneCrud.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Departments_EmployeeId",
-                table: "Departments",
+                name: "IX_vehicles_EmployeeId",
+                table: "vehicles",
                 column: "EmployeeId",
                 unique: true);
         }
@@ -58,7 +58,7 @@ namespace OneToOneCrud.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Departments");
+                name: "vehicles");
 
             migrationBuilder.DropTable(
                 name: "Employees");

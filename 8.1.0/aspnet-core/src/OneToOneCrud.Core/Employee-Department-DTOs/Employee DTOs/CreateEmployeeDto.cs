@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace OneToOneCrud.Employee_Department_DTOs
+namespace OneToOneCrud.Employee_vehicle_DTOs
 {
     [AutoMapFrom(typeof(Employee))]
     public class CreateEmployeeDto : EntityDto<int>

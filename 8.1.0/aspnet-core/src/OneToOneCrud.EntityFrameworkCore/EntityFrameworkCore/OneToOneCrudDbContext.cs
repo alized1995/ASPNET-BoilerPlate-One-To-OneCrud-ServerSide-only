@@ -11,7 +11,7 @@ namespace OneToOneCrud.EntityFrameworkCore
     {
         /* Define a DbSet for each entity of the application */
         public DbSet<Employee> Employees { get; set; }
-        public DbSet<Department> Departments { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
 
 
         public OneToOneCrudDbContext(DbContextOptions<OneToOneCrudDbContext> options)
@@ -23,9 +23,9 @@ namespace OneToOneCrud.EntityFrameworkCore
         {
 
             modelBuilder.Entity<Employee>()
-                .HasOne(e => e.Department)
+                .HasOne(e => e.Vehicle)
                 .WithOne(d => d.Employee)
-                .HasForeignKey<Department>(d => d.EmployeeId)
+                .HasForeignKey<Vehicle>(d => d.EmployeeId)
                 .OnDelete(DeleteBehavior.Cascade);
 
 
